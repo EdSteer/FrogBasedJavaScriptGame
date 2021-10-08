@@ -1,0 +1,24 @@
+EGGER
+
+1. work out size of and make grid 
+
+2. add EGG to grid and move it
+
+3. move obstacle along w/timer?
+
+
+rows from bottom to top 
+bottom row =  stopwatch on right & frogs remaining on left
+row 1 = home
+row 2 = car1
+row 3 = bus
+row 4 = sports car
+row 5 = lorry2
+row 6 = home
+row 7 = log
+row 8 = turtle
+row 9 = log2
+row 10 = turtle
+row 11 = log3 / croc
+row 12 = lilypad
+top row = score & Frog Based JavaScript game
