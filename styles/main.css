@@ -48,3 +48,10 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.car2 {
+  background-image: url('../ASSETS/CAR2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}

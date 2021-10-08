@@ -6,13 +6,17 @@ function init() {
   const cellCount = width * width
   const cells = []
 
-  const startingFrogPosition = 0
-  let currentFrogPosition = 0
+  const startingFrogPosition = 95
+  let currentFrogPosition = 95
   const FrogClass = 'frog'
 
   const startingCar1Position = 80
   let currentCar1Position = 80
   const Car1Class = 'car1'
+
+  const startingCar2Position = 69
+  let currentCar2Position = 69
+  const Car2Class = 'car2'
   
 
 
@@ -25,6 +29,7 @@ function init() {
     }
     addFrog(startingFrogPosition)
     addCar1(startingCar1Position)
+    addCar2(startingCar2Position)
   
   }
 
@@ -35,8 +40,13 @@ function init() {
   function removeFrog(position) {
     cells[position].classList.remove(FrogClass)
   }
+
   function addCar1(position) {
     cells[position].classList.add(Car1Class)
+      }
+
+  function addCar2(position) {
+    cells[position].classList.add(Car2Class)
       }
 
   function handleKeyUp(event) {
