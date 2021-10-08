@@ -42,3 +42,9 @@ body {
 .infotop {
   display: flex;
 }
+
+.car1 {
+  background-image: url('../ASSETS/CAR1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

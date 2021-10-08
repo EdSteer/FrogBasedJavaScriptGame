@@ -10,6 +10,12 @@ function init() {
   let currentFrogPosition = 0
   const FrogClass = 'frog'
 
+  const startingCar1Position = 80
+  let currentCar1Position = 80
+  const Car1Class = 'car1'
+  
+
+
   function createGrid(startingFrogPosition) {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
@@ -18,6 +24,8 @@ function init() {
       cells.push(cell)
     }
     addFrog(startingFrogPosition)
+    addCar1(startingCar1Position)
+  
   }
 
   function addFrog(position) {
@@ -27,7 +35,9 @@ function init() {
   function removeFrog(position) {
     cells[position].classList.remove(FrogClass)
   }
-
+  function addCar1(position) {
+    cells[position].classList.add(Car1Class)
+      }
 
   function handleKeyUp(event) {
     console.log('position before key', currentFrogPosition)
