@@ -108,6 +108,23 @@ function init() {
       console.log('INVALID KEY')
     }
 
+    function handleStartTimer() {
+      if (gameTimer) { 
+        console.log('the timer was alreading running')
+        clearInterval(gameTimer) // clear the current timer that is running
+        gameTimer = null // set the timer back to null, ready for a new id
+      } else {
+        console.log('the timer wasnt running, so a new one has been started')
+        gameTimer = setInterval(() => { // set the timer to run every 1 second
+          timeRemaining-- // reduce time remaining by one
+          timerScreen.innerHTML = timeRemaining // set the time remaining on the screen
+          if (timeRemaining === 0) { // if time is up
+            clearInterval(timerId) // clear the current timer
+            timerBody.classList.add('ringing') // add a class to trigger the animation
+          }
+        }, 60000)
+      }
+    }
     
     function moveCarRight() {
       carRight.forEach((car, i) => {
@@ -123,6 +140,8 @@ function init() {
         }
       })
     }
+
+    startButton.addEventListener('click', handleStartTimer)
 
     addFrog(currentFrogPosition)
     moveCarRight(carRight)
