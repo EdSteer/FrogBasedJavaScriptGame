@@ -1,6 +1,13 @@
 function init() {
 
   const grid = document.querySelector('.grid')
+  const startButton = document.querySelector('#start')
+  const scoreDisplay= document.querySelector('#score-display')
+  const livesDisplay = document.querySelector('#lives-display')
+
+  let gameTimer
+  let livesRemaining = 3
+  let score = 0
   
   const width = 10
   const cellCount = width * width
@@ -14,6 +21,15 @@ function init() {
   const Car1Class = 'car1'
   const startingCar2Position = 79
   const Car2Class = 'car2'
+  const startingCar3Position = 59
+  const Car3Class = 'car3'
+  const startingTurtle1Position = 20
+  const Turtle1Class = 'turtle1'
+  const startingLog1Position = 19
+  const Log1Class = 'log1'
+  const startingLog2Position = 39
+  const Log2Class = 'log2'
+
   
   
   
@@ -29,6 +45,10 @@ function init() {
     addFrog(startingFrogPosition)
     addCar1(startingCar1Position)
     addCar2(startingCar2Position)
+    addcar3(startingCar3Position)
+    addturtle1(startingTurtle1Position)
+    addLog1(startingLog1Position)
+    addLog2(startingLog2Position)
     
     
   
@@ -48,6 +68,22 @@ function init() {
 
   function addCar2(position) {
     cells[position].classList.add(Car2Class)
+  }
+  
+  function addcar3(position) {
+    cells[position].classList.add(Car3Class)
+  }
+
+  function addturtle1(position) {
+    cells[position].classList.add(Turtle1Class)
+  }
+
+  function addLog1(position) {
+    cells[position].classList.add(Log1Class)
+  }
+
+  function addLog2(position) {
+    cells[position].classList.add(Log2Class)
   }
   
 
@@ -72,26 +108,24 @@ function init() {
       console.log('INVALID KEY')
     }
 
-    // carRight.forEach(car => {
-    //   cells[car].classList.add('car1')
-    // })
-    // function moveCarRight() {
-    //   carRight.forEach((car, i) => {
-    //     if (car === 80) { 
-    //       cells[car].classList.remove('car1')
-    //       carsRight[i] -= (width - 1)
-    //       cells[car -= (width - 1)].classList.add('car1')
-    //     } else {
-    //       cells[car].classList.remove('car1')
-    //       carsRight[i] += 1
-    //       cells[car += 1].classList.add('car1')
+    
+    function moveCarRight() {
+      carRight.forEach((car, i) => {
+        if (car === 80) { 
+          cells[car].classList.remove('car1')
+          carRight[i] -= (width - 1)
+          cells[car -= (width - 1)].classList.add('car1')
+        } else {
+          cells[car].classList.remove('car1')
+          carRight[i] += 1
+          cells[car += 1].classList.add('car1')
           
-    //     }
-    //   })
-    // }
+        }
+      })
+    }
 
     addFrog(currentFrogPosition)
-    // moveCarRight(carRight)
+    moveCarRight(carRight)
     
   }
 

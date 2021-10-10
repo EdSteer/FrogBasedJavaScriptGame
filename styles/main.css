@@ -3,6 +3,9 @@
 }
 
 body {
+  background-image: url('../ASSETS/FOILAGEBORDER.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 100vh;
   margin: 0;
 }
@@ -13,6 +16,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+}
+
+.infotop {
+  justify-content: space-around;
 }
 
 .grid {
@@ -54,6 +62,31 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 
+}
+
+.car3 {
+  background-image: url('../ASSETS/SPORTSCAR1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+.turtle1 {
+  background-image: url('../ASSETS/TURTLE.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.log1 {
+  background-image: url('../ASSETS/LOG1.png');
+  background-size: contain;
+  background-repeat: no-repeat;  
+}
+
+.log2 {
+  background-image: url('../ASSETS/LOG1.png');
+  background-size: contain;
+  background-repeat: no-repeat;  
 }
 
 .foilage {
