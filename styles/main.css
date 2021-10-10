@@ -55,3 +55,14 @@ body {
   background-repeat: no-repeat;
 
 }
+
+.foilage {
+  background-image: url('../ASSETS/FOILAGE.png');
+
+}
+
+.road {
+  background-image: url('../ASSETS/ROAD.png');
+  
+
+}
