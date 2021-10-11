@@ -4,6 +4,7 @@
 
 body {
   background-image: url('../ASSETS/FOILAGEBORDER.png');
+  background-color: darkgreen;
   background-repeat: no-repeat;
   background-size: contain;
   height: 100vh;
@@ -85,7 +86,7 @@ body {
 
 .log2 {
   background-image: url('../ASSETS/LOG1.png');
-  background-size: contain;
+  background-size: 125%;
   background-repeat: no-repeat;  
 }
 

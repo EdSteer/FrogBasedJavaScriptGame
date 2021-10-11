@@ -1,5 +1,7 @@
 function init() {
 
+  // ** VARIABLES
+
   const grid = document.querySelector('.grid')
   const startButton = document.querySelector('#start')
   const scoreDisplay= document.querySelector('#score-display')
@@ -7,7 +9,7 @@ function init() {
 
   let gameTimer
   let livesRemaining = 3
-  let score = 0
+  // let scoreDisplay = 0
   
   const width = 10
   const cellCount = width * width
@@ -19,21 +21,27 @@ function init() {
   
   const startingCar1Position = 80
   const Car1Class = 'car1'
+  let currentCar1Position = 80
   const startingCar2Position = 79
   const Car2Class = 'car2'
+  let currentCar2Position = 79
   const startingCar3Position = 59
   const Car3Class = 'car3'
+  let currentCar3Position = 59
   const startingTurtle1Position = 20
   const Turtle1Class = 'turtle1'
+  let currentTurtle1Position = 20
   const startingLog1Position = 19
   const Log1Class = 'log1'
-  const startingLog2Position = 39
+  let currentLog1Position = 19
+  const startingLog2Position = 37
   const Log2Class = 'log2'
+  let currentLog2Position = 37
 
   
   
   
-
+// creating grid
 
   function createGrid(startingFrogPosition) {
     for (let i = 0; i < cellCount; i++) {
@@ -57,7 +65,6 @@ function init() {
   function addFrog(position) {
     cells[position].classList.add(FrogClass)
   }
-
   function removeFrog(position) {
     cells[position].classList.remove(FrogClass)
   }
@@ -65,28 +72,48 @@ function init() {
   function addCar1(position) {
     cells[position].classList.add(Car1Class)
   }
+  function removeCar1(position) {
+    cells[position].classList.remove(Car1Class)
+  }
 
   function addCar2(position) {
     cells[position].classList.add(Car2Class)
+  }
+  function removeCar2(position) {
+    cells[position].classList.remove(Car2Class)
   }
   
   function addcar3(position) {
     cells[position].classList.add(Car3Class)
   }
+  function removeCar3(position) {
+    cells[position].classList.remove(Car3Class)
+  }
 
   function addturtle1(position) {
     cells[position].classList.add(Turtle1Class)
+  }
+  function removeturtle1(position) {
+    cells[position].classList.remove(Turtle1Class)
   }
 
   function addLog1(position) {
     cells[position].classList.add(Log1Class)
   }
+  function removeLog1(position) {
+    cells[position].classList.remove(Log1Class)
+  }  
 
   function addLog2(position) {
     cells[position].classList.add(Log2Class)
   }
-  
+  function removeLog2(position) {
+    cells[position].classList.remove(Log2Class)
+  }  
 
+  
+  
+// ** MOVING FROG **
     function handleKeyUp(event) {
     console.log('position before key', currentFrogPosition)
     const key = event.keyCode
@@ -107,44 +134,47 @@ function init() {
     } else {
       console.log('INVALID KEY')
     }
+//  ** Moving Obstacles**
 
-    function handleStartTimer() {
-      if (gameTimer) { 
-        console.log('the timer was alreading running')
-        clearInterval(gameTimer) // clear the current timer that is running
-        gameTimer = null // set the timer back to null, ready for a new id
-      } else {
-        console.log('the timer wasnt running, so a new one has been started')
-        gameTimer = setInterval(() => { // set the timer to run every 1 second
-          timeRemaining-- // reduce time remaining by one
-          timerScreen.innerHTML = timeRemaining // set the time remaining on the screen
-          if (timeRemaining === 0) { // if time is up
-            clearInterval(timerId) // clear the current timer
-            timerBody.classList.add('ringing') // add a class to trigger the animation
-          }
-        }, 60000)
-      }
-    }
+    //   function movingObstacle() {
+    //   const obstacleTimer = setInterval(() => {
+    //     removeLog2(startingLog2Position)
+    //     addLog2(currentLog2Position)
+    //     removeLog2(currentLog2Position)
+    //     if (currentLog2Position % width !== width -1) {
+    //       currentLog2Position += 1
+    //       addLog2(currentLog2Position)
+    //     } else {
+    //       removeLog2(currentLog2Position)
+    //       addLog2(startingLog2Position)
+    //     }
+
+    //   }, 250)
+    // }
+
+    // function addingRemovingObstacle() {
+    //   removeLog2(startingLog2Position)
+    //   addLog2(currentLog2Position)
+    //   counter++
+    //   if (counter < 1) {
+    //     removeLog2(currentLog2Position)
+    //     currentLog2Position += 1
+    //     addLog2(currentLog2Position)
+    //   } else {
+    //     removeLog2(currentLog2Position)
+    //     addLog2(startingLog2Position)
+    //     clearInterval(repeat)
+    //   }
+    // }
+
     
-    function moveCarRight() {
-      carRight.forEach((car, i) => {
-        if (car === 80) { 
-          cells[car].classList.remove('car1')
-          carRight[i] -= (width - 1)
-          cells[car -= (width - 1)].classList.add('car1')
-        } else {
-          cells[car].classList.remove('car1')
-          carRight[i] += 1
-          cells[car += 1].classList.add('car1')
-          
-        }
-      })
-    }
+    
 
-    startButton.addEventListener('click', handleStartTimer)
+    // startButton.addEventListener('click', handleStartTimer)
 
     addFrog(currentFrogPosition)
-    moveCarRight(carRight)
+    addLog2(currentLog2Position)
+    
     
   }
 
@@ -155,6 +185,7 @@ function init() {
 
 
   document.addEventListener('keyup', handleKeyUp)
+  // start.addEventListener('click', movingObstacle)
 
   createGrid(startingFrogPosition)
 
