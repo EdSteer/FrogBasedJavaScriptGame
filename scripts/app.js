@@ -6,9 +6,9 @@ function init() {
   const startButton = document.querySelector('#start')
   const scoreDisplay= document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
-
-  let gameTimer
-  let livesRemaining = 3
+  
+  // let countdown = 60
+  // let livesDisplay = 3
   // let scoreDisplay = 0
   
   const width = 10
@@ -156,7 +156,7 @@ function init() {
     //   removeLog2(startingLog2Position)
     //   addLog2(currentLog2Position)
     //   counter++
-    //   if (counter < 1) {
+    //   if ????? {
     //     removeLog2(currentLog2Position)
     //     currentLog2Position += 1
     //     addLog2(currentLog2Position)
@@ -170,7 +170,7 @@ function init() {
     
     
 
-    // startButton.addEventListener('click', handleStartTimer)
+    // startButton.addEventListener('click', startButton)
 
     addFrog(currentFrogPosition)
     addLog2(currentLog2Position)

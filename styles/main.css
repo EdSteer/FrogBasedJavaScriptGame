@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+
+  button {
+    font-family:'Permanent Marker', cursive;
+    background-image: url('../ASSETS/BUTTON.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border:none;
+  }
+  
+
 body {
   background-image: url('../ASSETS/FOILAGEBORDER.png');
   background-color: darkgreen;
@@ -11,6 +21,10 @@ body {
   margin: 0;
 }
 
+span {
+  color: red;
+  
+}
 
 .grid-wrapper {
   height: 100vh;
@@ -18,10 +32,6 @@ body {
   justify-content: center;
   align-items: center;
   
-}
-
-.infotop {
-  justify-content: space-around;
 }
 
 .grid {
@@ -50,6 +60,8 @@ body {
 
 .infotop {
   display: flex;
+  justify-content: space-around;
+  font-family:'Permanent Marker', cursive;
 }
 
 .car1 {
