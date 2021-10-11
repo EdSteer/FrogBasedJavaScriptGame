@@ -134,45 +134,25 @@ function init() {
     } else {
       console.log('INVALID KEY')
     }
-//  ** Moving Obstacles**
-
-    //   function movingObstacle() {
-    //   const obstacleTimer = setInterval(() => {
-    //     removeLog2(startingLog2Position)
-    //     addLog2(currentLog2Position)
-    //     removeLog2(currentLog2Position)
-    //     if (currentLog2Position % width !== width -1) {
-    //       currentLog2Position += 1
-    //       addLog2(currentLog2Position)
-    //     } else {
-    //       removeLog2(currentLog2Position)
-    //       addLog2(startingLog2Position)
-    //     }
-
-    //   }, 250)
-    // }
-
-    // function addingRemovingObstacle() {
-    //   removeLog2(startingLog2Position)
-    //   addLog2(currentLog2Position)
-    //   counter++
-    //   if ????? {
-    //     removeLog2(currentLog2Position)
-    //     currentLog2Position += 1
-    //     addLog2(currentLog2Position)
-    //   } else {
-    //     removeLog2(currentLog2Position)
-    //     addLog2(startingLog2Position)
-    //     clearInterval(repeat)
-    //   }
-    // }
-
-    
-    
-
-    // startButton.addEventListener('click', startButton)
-
     addFrog(currentFrogPosition)
+
+    // ** START GAME **
+
+    function movingObstacle() {
+    
+      removeLog2(currentLog2Position)
+      if (movingObstacle && currentLog2Position % width !== width -1) {
+        currentLog2Position--
+      }
+    }
+    
+
+    
+    
+
+    startButton.addEventListener('click', startButton, movingObstacle)
+
+    
     addLog2(currentLog2Position)
     
     
@@ -185,10 +165,11 @@ function init() {
 
 
   document.addEventListener('keyup', handleKeyUp)
-  // start.addEventListener('click', movingObstacle)
+  
 
   createGrid(startingFrogPosition)
 
 }
 
 window.addEventListener('DOMContentLoaded', init)
+

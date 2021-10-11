@@ -61,7 +61,7 @@ span {
 .infotop {
   display: flex;
   justify-content: space-around;
-  font-family:'Permanent Marker', cursive;
+  font-family: 'Space Mono', monospace;
 }
 
 .car1 {
