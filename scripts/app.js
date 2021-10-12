@@ -255,7 +255,7 @@ function init() {
     }
 
     startButton.addEventListener('click', handleStartTimer)
-    console.log(startButton)
+    console.log(handleStartTimer)
     
     // **COLLISIONS/SCORING**
     // 10 points added for each obstacle avoided and 100 points for reaching lilypad at the end

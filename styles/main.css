@@ -4,7 +4,7 @@
 
 
   button {
-    font-family:'Permanent Marker', cursive;
+    font-family: 'Space Mono', monospace;
     background-image: url('../ASSETS/BUTTON.png');
     background-repeat: no-repeat;
     background-size: contain;
