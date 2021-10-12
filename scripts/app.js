@@ -6,6 +6,7 @@ function init() {
   const startButton = document.querySelector('#start')
   const scoreDisplay= document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
+  const timeLeft = document.querySelector('#timer')
   
   // let countdown = 60
   // let livesDisplay = 3
@@ -19,29 +20,101 @@ function init() {
   let currentFrogPosition = 95
   const FrogClass = 'frog'
   
-  const startingCar1Position = 80
-  const Car1Class = 'car1'
-  let currentCar1Position = 80
-  const startingCar2Position = 79
-  const Car2Class = 'car2'
-  let currentCar2Position = 79
-  const startingCar3Position = 59
-  const Car3Class = 'car3'
-  let currentCar3Position = 59
-  const startingTurtle1Position = 20
-  const Turtle1Class = 'turtle1'
-  let currentTurtle1Position = 20
-  const startingLog1Position = 19
-  const Log1Class = 'log1'
-  let currentLog1Position = 19
-  const startingLog2Position = 37
-  const Log2Class = 'log2'
-  let currentLog2Position = 37
+  const obstacles = [
+    {
+      cssClass: 'car1',
+      startPosition: 80,
+      currentPosition: 80,
+      order: 'first',
+      direction: 'right',
+      timer: null
+    },
+    {
+      cssClass: 'car1',
+      startPosition: 80,
+      currentPosition: 80,
+      order: 'second',
+      direction: 'right',
+      timer: null
+    },
+    {
+      cssClass: 'car2',
+      startPosition: 79,
+      currentPosition: 79,
+      order: 'first',
+      direction: 'left',
+      timer: null
+    },
+    {
+      cssClass: 'car2',
+      startPosition: 79,
+      currentPosition: 79,
+      order: 'second',
+      direction: 'left',
+      timer: null
+    },
+    {
+      cssClass: 'car3',
+      startPosition: 59,
+      currentPosition: 59,
+      order: 'first',
+      direction: 'left',
+      timer: null
+    },
+    {
+      cssClass: 'car3',
+      startPosition: 59,
+      currentPosition: 59,
+      order: 'second',
+      direction: 'left',
+      timer: null
+    },
+    {
+      cssClass: 'turtle1',
+      startPosition: 20,
+      currentPosition: 20,
+      order: 'first',
+      direction: 'right',
+      timer: null
+    },
+    {
+      cssClass: 'turtle1',
+      startPosition: 20,
+      currentPosition: 20,
+      order: 'second',
+      direction: 'right',
+      timer: null
+    },
+    {
+      cssClass: 'log1',
+      startPosition: 19,
+      currentPosition: 19,
+      order: 'first',
+      direction: 'left',
+      timer: null
+    },
+    {
+      cssClass: 'log1',
+      startPosition: 19,
+      currentPosition: 19,
+      order: 'second',
+      direction: 'left',
+      timer: null
+    }
+
+
+  ]
+  
+  
+  
+
+  
 
   
   
   
-// creating grid
+// ** GRID **
+// need to add background RIVER & FOILAGE!!!
 
   function createGrid(startingFrogPosition) {
     for (let i = 0; i < cellCount; i++) {
@@ -50,13 +123,14 @@ function init() {
       grid.appendChild(cell)
       cells.push(cell)
     }
+    obstacles.forEach(obstacle => {
+      if (obstacle.order === 'first') {
+        addObstacle(obstacle)
+      }
+    })
+    startMovement()
     addFrog(startingFrogPosition)
-    addCar1(startingCar1Position)
-    addCar2(startingCar2Position)
-    addcar3(startingCar3Position)
-    addturtle1(startingTurtle1Position)
-    addLog1(startingLog1Position)
-    addLog2(startingLog2Position)
+    
     
     
   
@@ -69,53 +143,22 @@ function init() {
     cells[position].classList.remove(FrogClass)
   }
 
-  function addCar1(position) {
-    cells[position].classList.add(Car1Class)
+  function addObstacle(obstacle) {
+    console.log(obstacle)
+    cells[obstacle.currentPosition].classList.add(obstacle.cssClass)
+
   }
-  function removeCar1(position) {
-    cells[position].classList.remove(Car1Class)
+  function removeObstacle(obstacle) {
+    cells[obstacle.currentPosition].classList.remove(obstacle.cssClass)
   }
 
-  function addCar2(position) {
-    cells[position].classList.add(Car2Class)
-  }
-  function removeCar2(position) {
-    cells[position].classList.remove(Car2Class)
-  }
+
+
   
-  function addcar3(position) {
-    cells[position].classList.add(Car3Class)
-  }
-  function removeCar3(position) {
-    cells[position].classList.remove(Car3Class)
-  }
-
-  function addturtle1(position) {
-    cells[position].classList.add(Turtle1Class)
-  }
-  function removeturtle1(position) {
-    cells[position].classList.remove(Turtle1Class)
-  }
-
-  function addLog1(position) {
-    cells[position].classList.add(Log1Class)
-  }
-  function removeLog1(position) {
-    cells[position].classList.remove(Log1Class)
-  }  
-
-  function addLog2(position) {
-    cells[position].classList.add(Log2Class)
-  }
-  function removeLog2(position) {
-    cells[position].classList.remove(Log2Class)
-  }  
-
   
   
 // ** MOVING FROG **
     function handleKeyUp(event) {
-    console.log('position before key', currentFrogPosition)
     const key = event.keyCode
     removeFrog(currentFrogPosition)
 
@@ -135,35 +178,108 @@ function init() {
       console.log('INVALID KEY')
     }
     addFrog(currentFrogPosition)
-
-    // ** START GAME **
-
-    function movingObstacle() {
-    
-      removeLog2(currentLog2Position)
-      if (movingObstacle && currentLog2Position % width !== width -1) {
-        currentLog2Position--
-      }
+  }
+    // **move obstacles**
+  function moveObstacles(obstacle){
+    removeObstacle(obstacle)
+    if (obstacle.currentPosition % width === width - 1 && obstacle.direction === 'right') {
+      obstacle.currentPosition = obstacle.startPosition
+      addObstacle(obstacle)
+      return
     }
-    
+    if (obstacle.currentPosition % width === 0 && obstacle.direction === 'left') {
+      obstacle.currentPosition = obstacle.startPosition
+      addObstacle(obstacle)
+      return
+    }
+    if (obstacle.direction === 'left') {
+      obstacle.currentPosition--
+      
+    } else {
+      obstacle.currentPosition++
+    }
+    addObstacle(obstacle)
+  }
 
-    
-    
-
-    startButton.addEventListener('click', startButton, movingObstacle)
-
-    
-    addLog2(currentLog2Position)
-    
-    
+  function startMovement(){
+    obstacles.forEach(obstacle => {
+      if (obstacle.order === 'first') {
+        obstacle.timer = setInterval(() => moveObstacles(obstacle), 1000)
+      } else {
+        setTimeout(() => {
+          addObstacle(obstacle)
+          obstacle.timer = setInterval(() => moveObstacles(obstacle), 1000)
+            
+          
+        }, 3000)
+      }
+      
+    })
   }
 
 
+    // function startGame() { need to make a function that's triggered by the START button and trigers ALL the obstacles to move AND works with timer.
+    
+    
+    
+    // also move FROG on LOG on top section
+
+ 
+     
+
+    
+
+    
+
+    //  ** TIMER **
+
+    // time to start decreasing when START button clicked also needs to link to start of obstacle movements
+
+    let timeRemaining = 60
+    let timerId = null
+    function handleStartTimer() {
+      if (timerId) {
+        clearInterval(timerId)
+        timerId = null
+      } else {
+        timerId = setInterval(() => {
+          timeRemaining--
+          timeLeft.innerHTML = timeRemaining
+          if (timeRemaining === 0) {
+            clearInterval(timerId)
+          }
+        }, 60000)
+      }
+      
+
+    }
+
+    startButton.addEventListener('click', handleStartTimer)
+    console.log(startButton)
+    
+    // **COLLISIONS/SCORING**
+    // 10 points added for each obstacle avoided and 100 points for reaching lilypad at the end
+    // trigger FROG to return to bottom of page and new FROG to appear on lilypad if succesful
+    // FROG to dissapear and everything restart in the event of collision
+    // 
+    // 
+    
+    //  **LEVELS**
+    // write function that repeats game at fater speed once all lilypads are full and adds number to LEVEL (upto 5?)
+
+    
+
+    
+    
+    
+  
 
 
 
 
 
+
+  
   document.addEventListener('keyup', handleKeyUp)
   
 
