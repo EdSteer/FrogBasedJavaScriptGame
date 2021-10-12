@@ -237,9 +237,13 @@ function init() {
 
     // **POINTS**
     function scorePoints(event) {
-      if (cells[1].classList.contains('frog')) {
-        scoreDisplay.innerText = score += 100
-      }
+      console.log(scorePoints)
+      if (event.cells[1].classList.contains('frog')) {
+        currentScore.innerText = score += 100
+        event.cells[1].classList.removeFrog('frog')
+        event.cells[95].classList.addFrog('frog')
+      } 
+      
     }
 
     // time to start decreasing when START button clicked also needs to link to start of obstacle movements
@@ -267,14 +271,14 @@ function init() {
     // console.log(handleStartTimer)
     
     // **COLLISIONS/SCORING**
-    // 10 points added for each obstacle avoided and 100 points for reaching lilypad at the end
+    // 100 points for reaching lilypad at the end
     // trigger FROG to return to bottom of page and new FROG to appear on lilypad if succesful
-    // FROG to dissapear and everything restart in the event of collision
+    // FROG to dissapear and everything restart in the event of collision upto total of 3 lives
     // 
     // 
     
     //  **LEVELS**
-    // write function that repeats game at fater speed once all lilypads are full and adds number to LEVEL (upto 5?)
+    // write function that repeats game at faster speed once all lilypads are full and adds number to LEVEL (upto 5?)?
 
     
 
@@ -289,7 +293,7 @@ function init() {
 
 
   
-  document.addEventListener('keyup', handleKeyUp)
+  document.addEventListener('keyup', handleKeyUp, scorePoints)
   
 
   createGrid(startingFrogPosition)
