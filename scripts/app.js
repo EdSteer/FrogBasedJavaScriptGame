@@ -8,9 +8,11 @@ function init() {
   const livesDisplay = document.querySelector('#lives-display')
   const timeLeft = document.querySelector('#timer')
   
-  // let countdown = 60
-  // let livesDisplay = 3
-  // let scoreDisplay = 0
+ 
+  let livesRemaining = 3
+  let score = 0
+  let gameTimer
+
   
   const width = 10
   const cellCount = width * width
@@ -231,31 +233,38 @@ function init() {
 
     
 
-    //  ** TIMER **
+    //  ** TIMER/SCORE/LIVES **
+
+    // **POINTS**
+    function scorePoints(event) {
+      if (cells[1].classList.contains('frog')) {
+        scoreDisplay.innerText = score += 100
+      }
+    }
 
     // time to start decreasing when START button clicked also needs to link to start of obstacle movements
 
-    let timeRemaining = 60
-    let timerId = null
-    function handleStartTimer() {
-      if (timerId) {
-        clearInterval(timerId)
-        timerId = null
-      } else {
-        timerId = setInterval(() => {
-          timeRemaining--
-          timeLeft.innerHTML = timeRemaining
-          if (timeRemaining === 0) {
-            clearInterval(timerId)
-          }
-        }, 60000)
-      }
+    // let timeRemaining = 60
+    // let timer = null
+    // function handleStartTimer() {
+    //   if (timer) {
+    //     clearInterval(timer)
+    //     timer = null
+    //   } else {
+    //     timer = setInterval(() => {
+    //       timeRemaining--
+    //       timeLeft.innerHTML = timeRemaining
+    //       if (timeRemaining === 0) {
+    //         clearInterval(timer)
+    //       }
+    //     }, 60000)
+    //   }
       
 
-    }
+    // }
 
-    startButton.addEventListener('click', handleStartTimer)
-    console.log(handleStartTimer)
+    // startButton.addEventListener('click', handleStartTimer)
+    // console.log(handleStartTimer)
     
     // **COLLISIONS/SCORING**
     // 10 points added for each obstacle avoided and 100 points for reaching lilypad at the end
