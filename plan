@@ -22,3 +22,12 @@ row 10 = turtle
 row 11 = log3 / croc
 row 12 = lilypad
 top row = score & Frog Based JavaScript game
+
+
+TODO - 
+
+get points/start button/timer/lives up and running - see WHACKAMOLE & stopwatch
+make enter page HTML CSS with link button to game page
+make code for levels?
+sounds?
+Backgrounds etc?
