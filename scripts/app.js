@@ -141,16 +141,16 @@ function init() {
     
   ]
 
-  const riverAndFoilage = [
-    {
-      cssClass: 'foilage',
-      position: [40 - 49]
-    },
-    {
-      cssClass: 'river',
-      position: [10 - 39]
-    }
-]
+//   const riverAndFoilage = [
+//     {
+//       cssClass: 'foilage',
+//       position: [40 - 49]
+//     },
+//     {
+//       cssClass: 'river',
+//       position: [10 - 39]
+//     }
+// ]
   
   
   
@@ -180,13 +180,16 @@ function init() {
     // })
     startMovement()
     addFrog(startingFrogPosition)
-    
+    addLily(lilyPad)
     
     
     
   
   }
-
+  function addLily(position) {
+    cells[position].classList.add(lilyPad.cssClass)
+  }
+  
   function addFrog(position) {
     cells[position].classList.add(FrogClass)
   }
