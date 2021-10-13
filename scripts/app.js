@@ -96,7 +96,7 @@ function init() {
       timer: null
     },
     {
-      cssClass: 'log1',
+      cssClass: 'croc',
       startPosition: 19,
       currentPosition: 19,
       order: 'second',
@@ -123,6 +123,13 @@ function init() {
 
 
   ]
+
+  // const lilyPad = [
+  //   {
+  //     cssClass: 'lilypad',
+  //     position: 
+  //   }
+  // ]
 
   const riverAndFoilage = [
     {
@@ -220,6 +227,9 @@ function init() {
   function moveObstacles(obstacle){
     const collision = currentFrogPosition === obstacle.currentPosition
     if (collision) frogCollision()
+
+    const scoring = currentFrogPosition === lilyPad.currentPosition
+    if (scoring) scorePoints()
     
     removeObstacle(obstacle)
     if (obstacle.currentPosition % width === width - 1 && obstacle.direction === 'right') {
@@ -280,12 +290,17 @@ let timerId = null
   
    // **POINTS**
     function scorePoints(event) {
+
+
+      addFrog(currentFrogPosition)
+      score + 100
+      scoreDisplay.innerText = score
     
-    if (event.cells[1].classList.contains('frog')) {
-      currentScore.innerText = score += 100
-      event.cells[1].classList.removeFrog('frog')
-      event.cells[95].classList.addFrog('frog')
-    } 
+    // if (event.cells[1].classList.contains('frog')) {
+    //   currentScore.innerText = score += 100
+    //   event.cells[1].classList.removeFrog('frog')
+    //   event.cells[95].classList.addFrog('frog')
+    // } 
   }
 
   // **COLLISIONS**

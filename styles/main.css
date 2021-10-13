@@ -112,6 +112,12 @@ span {
   background-repeat: no-repeat;
 }
 
+.lilypad {
+  background-image: url('../ASSETS/LilyPad.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
 .foilage {
   background-image: url('../ASSETS/FOILAGE.png');
