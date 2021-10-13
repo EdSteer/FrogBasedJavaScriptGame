@@ -127,7 +127,7 @@ function init() {
   
   
 // ** GRID **
-// need to add background RIVER & FOILAGE!!!
+
 
   function createGrid(startingFrogPosition) {
     for (let i = 0; i < cellCount; i++) {
@@ -146,7 +146,7 @@ function init() {
     // })
     startMovement()
     addFrog(startingFrogPosition)
-    // addriverFoilage(riverAndFoilage)
+    
     
     
     
@@ -167,6 +167,9 @@ function init() {
   }
   function removeObstacle(obstacle) {
     cells[obstacle.currentPosition].classList.remove(obstacle.cssClass)
+  }
+  function addriverFoilage(riverFoilage) {
+    cells[riverFoilage.position].classList.add(riverFoilage.cssClass)
   }
 
 
@@ -264,56 +267,20 @@ let timerId = null
     } 
   }
 
-    
-    
-    
-    
-    
+  // **COLLISIONS**
 
- 
-     
-
-    
-
-    
+    function frogCollision(event) {
+      if (event.target.classList.contains('frog', 'obstacle')) {
+        event.target.classlist.remove('frog')
+        livesRemaining--
+        livesDisplay.innerText = livesRemaining
+      }
+    }
 
     
-
-   
-
-    // time to start decreasing when START button clicked also needs to link to start of obstacle movements
-
-    // let timeRemaining = 60
-    // let timer = null
-    // function handleStartTimer() {
-    //   if (timer) {
-    //     clearInterval(timer)
-    //     timer = null
-    //   } else {
-    //     timer = setInterval(() => {
-    //       timeRemaining--
-    //       timeLeft.innerHTML = timeRemaining
-    //       if (timeRemaining === 0) {
-    //         clearInterval(timer)
-    //       }
-    //     }, 60000)
-    //   }
-      
-
-    // }
 
   startButton.addEventListener('click', startTimer)
-    // console.log(handleStartTimer)
     
-    // **COLLISIONS/SCORING**
-    // 100 points for reaching lilypad at the end
-    // trigger FROG to return to bottom of page and new FROG to appear on lilypad if succesful
-    // FROG to dissapear and everything restart in the event of collision upto total of 3 lives
-    // 
-    // 
-    
-    //  **LEVELS**
-    // write function that repeats game at faster speed once all lilypads are full and adds number to LEVEL (upto 5?)?
 
     
 
@@ -328,7 +295,7 @@ let timerId = null
 
 
   
-  document.addEventListener('keyup', handleKeyUp, scorePoints)
+  document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision)
   
 
   createGrid(startingFrogPosition)

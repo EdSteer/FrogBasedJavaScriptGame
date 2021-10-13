@@ -26,7 +26,8 @@ top row = score & Frog Based JavaScript game
 
 TODO - 
 
-get points/start button/timer/lives up and running - see WHACKAMOLE & stopwatch
+get points/start button/timer/lives/collisions up and running - see WHACKAMOLE & stopwatch
+how to seperate functions for obstales and "helping obstacles" amybe just have more obstacles on top and no help?
 make enter page HTML CSS with link button to game page
 make code for levels?
 sounds?
