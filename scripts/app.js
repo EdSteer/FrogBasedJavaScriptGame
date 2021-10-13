@@ -303,8 +303,8 @@ let timerId = null
   
    // **POINTS**
     function scorePoints(event) {
-
-
+      removeFrog(currentFrogPosition)
+      currentFrogPosition = startingFrogPosition
       addFrog(currentFrogPosition)
       score + 100
       scoreDisplay.innerText = score
