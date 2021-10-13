@@ -1,5 +1,18 @@
+body {
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: seagreen;
+
+}
+
+
+
 button {
   font-family: 'Space Mono', monospace;
+  border: none;
+  background-color: seagreen;
+  padding-top: 50vh;
 }
 
 

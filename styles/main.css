@@ -5,16 +5,19 @@
 
   button {
     font-family: 'Space Mono', monospace;
-    background-image: url('../ASSETS/BUTTON.png');
+    /* background-image: url('../ASSETS/BUTTON.png'); */
     background-repeat: no-repeat;
     background-size: contain;
     border:none;
+    background-color: seagreen;
+    color: red;
+    font-size: 30px;
   }
   
 
 body {
-  background-image: url('../ASSETS/FOILAGEBORDER.png');
-  background-color: darkgreen;
+  /* background-image: url('../ASSETS/FOILAGEBORDER.png'); */
+  background-color: seagreen;
   background-repeat: no-repeat;
   background-size: contain;
   height: 100vh;
@@ -36,7 +39,7 @@ span {
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -62,6 +65,7 @@ span {
   display: flex;
   justify-content: space-around;
   font-family: 'Space Mono', monospace;
+  padding-top: 5vh;
 }
 
 .car1 {
