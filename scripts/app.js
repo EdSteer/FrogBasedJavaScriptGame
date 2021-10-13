@@ -102,7 +102,24 @@ function init() {
       order: 'second',
       direction: 'left',
       timer: null
+    },
+    {
+      cssClass: 'croc',
+      startPosition: 33,
+      currentPosition: 33,
+      order: 'first',
+      direction: 'right',
+      timer: null
+    },
+    {
+      cssClass: 'croc',
+      startPosition: 33,
+      currentPosition: 33,
+      order: 'second',
+      direction: 'right',
+      timer: null
     }
+
 
 
   ]
@@ -161,7 +178,7 @@ function init() {
   }
 
   function addObstacle(obstacle) {
-    console.log(obstacle)
+    
     cells[obstacle.currentPosition].classList.add(obstacle.cssClass)
 
   }
@@ -201,6 +218,9 @@ function init() {
   }
     // **move obstacles**
   function moveObstacles(obstacle){
+    const collision = currentFrogPosition === obstacle.currentPosition
+    if (collision) frogCollision()
+    
     removeObstacle(obstacle)
     if (obstacle.currentPosition % width === width - 1 && obstacle.direction === 'right') {
       obstacle.currentPosition = obstacle.startPosition
@@ -243,6 +263,7 @@ let timeRemaining =60
 let timerId = null
 
   function startTimer() {
+    
     if (timerId) {
       clearInterval(timerId)
       timerId = null
@@ -253,13 +274,13 @@ let timerId = null
         if (timeRemaining === 0) {
           clearInterval(timerId)
         }
-      }, 60000)
+      }, 1000)
     }
   }
   
    // **POINTS**
     function scorePoints(event) {
-    console.log(scorePoints)
+    
     if (event.cells[1].classList.contains('frog')) {
       currentScore.innerText = score += 100
       event.cells[1].classList.removeFrog('frog')
@@ -270,11 +291,12 @@ let timerId = null
   // **COLLISIONS**
 
     function frogCollision(event) {
-      if (event.target.classList.contains('frog', 'obstacle')) {
-        event.target.classlist.remove('frog')
+      removeFrog(currentFrogPosition)
+      currentFrogPosition = startingFrogPosition
+      addFrog(currentFrogPosition)
         livesRemaining--
         livesDisplay.innerText = livesRemaining
-      }
+      
     }
 
     

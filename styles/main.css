@@ -106,6 +106,13 @@ span {
   background-repeat: no-repeat;  
 }
 
+.croc {
+  background-image: url('../ASSETS/CROC1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
 .foilage {
   background-image: url('../ASSETS/FOILAGE.png');
 
