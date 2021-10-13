@@ -124,12 +124,22 @@ function init() {
 
   ]
 
-  // const lilyPad = [
-  //   {
-  //     cssClass: 'lilypad',
-  //     position: 
-  //   }
-  // ]
+  const lilyPad = [
+    
+    {
+      cssClass: 'lilypad',
+      position: 1
+    },
+    {
+      cssClass: 'lilypad',
+      position: 4
+    },
+    {
+      cssClass:'lilypad',
+      position:7
+    }
+    
+  ]
 
   const riverAndFoilage = [
     {
