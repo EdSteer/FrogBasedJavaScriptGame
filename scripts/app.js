@@ -11,7 +11,7 @@ function init() {
  
   let livesRemaining = 3
   let score = 0
-  let gameTimer
+  
 
   
   const width = 10
@@ -106,6 +106,17 @@ function init() {
 
 
   ]
+
+  const riverAndFoilage = [
+    {
+      cssClass: 'foilage',
+      position: [40 - 49]
+    },
+    {
+      cssClass: 'river',
+      position: [10 - 39]
+    }
+]
   
   
   
@@ -130,8 +141,12 @@ function init() {
         addObstacle(obstacle)
       }
     })
+    // riverAndFoilage.forEach(riverFoilage => {
+    //   addriverFoilage(riverFoilage)
+    // })
     startMovement()
     addFrog(startingFrogPosition)
+    // addriverFoilage(riverAndFoilage)
     
     
     
@@ -218,13 +233,42 @@ function init() {
       
     })
   }
+  //  ** TIMER/SCORE/LIVES **
 
+  // ** START GAME TIMER
+let timeRemaining =60
+let timerId = null
 
-    // function startGame() { need to make a function that's triggered by the START button and trigers ALL the obstacles to move AND works with timer.
+  function startTimer() {
+    if (timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      timerId = setInterval(() => {
+        timeRemaining--
+        timeLeft.innerHTML = timeRemaining
+        if (timeRemaining === 0) {
+          clearInterval(timerId)
+        }
+      }, 60000)
+    }
+  }
+  
+   // **POINTS**
+    function scorePoints(event) {
+    console.log(scorePoints)
+    if (event.cells[1].classList.contains('frog')) {
+      currentScore.innerText = score += 100
+      event.cells[1].classList.removeFrog('frog')
+      event.cells[95].classList.addFrog('frog')
+    } 
+  }
+
     
     
     
-    // also move FROG on LOG on top section
+    
+    
 
  
      
@@ -233,18 +277,9 @@ function init() {
 
     
 
-    //  ** TIMER/SCORE/LIVES **
+    
 
-    // **POINTS**
-    function scorePoints(event) {
-      console.log(scorePoints)
-      if (event.cells[1].classList.contains('frog')) {
-        currentScore.innerText = score += 100
-        event.cells[1].classList.removeFrog('frog')
-        event.cells[95].classList.addFrog('frog')
-      } 
-      
-    }
+   
 
     // time to start decreasing when START button clicked also needs to link to start of obstacle movements
 
@@ -267,7 +302,7 @@ function init() {
 
     // }
 
-    // startButton.addEventListener('click', handleStartTimer)
+  startButton.addEventListener('click', startTimer)
     // console.log(handleStartTimer)
     
     // **COLLISIONS/SCORING**
