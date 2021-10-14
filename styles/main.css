@@ -130,6 +130,14 @@ span {
   background-repeat: no-repeat;
 }
 
+.river {
+  background-color: blue;
+}
+
+.road {
+  background-color: grey;
+}
+
 /* div   {
   background-image: url('../ASSETS/ROAD.png');
   
