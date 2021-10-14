@@ -7,7 +7,7 @@ function init() {
   const scoreDisplay= document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
   const timeLeft = document.querySelector('#timer')
-  const gameOver = document.querySelector('#gameOver')
+  const gameOverPage = document.querySelector('#gameOver')
   
  
   let livesRemaining = 3
@@ -113,9 +113,9 @@ function init() {
       timer: null
     },
     {
-      cssClass: 'croc',
-      startPosition: 33,
-      currentPosition: 33,
+      cssClass: 'bird1',
+      startPosition: 30,
+      currentPosition: 30,
       order: 'second',
       direction: 'right',
       timer: null
@@ -246,8 +246,7 @@ function init() {
     const collision = currentFrogPosition === obstacle.currentPosition
     if (collision) frogCollision()
 
-    // const scoring = currentFrogPosition === lilyPad.currentPosition
-    // if (scoring) scorePoints()
+   
     
     removeObstacle(obstacle)
     if (obstacle.currentPosition % width === width - 1 && obstacle.direction === 'right') {
@@ -336,7 +335,7 @@ let timerId = null
 
     
 
-    function gameOver() {
+    function gameOverPage() {
       if (livesDisplay === 0 || timeLeft === 0 && scoreDisplay < 300) {
         removeFrog(currentFrogPosition)
         currentFrogPosition = startingFrogPosition
@@ -361,7 +360,7 @@ let timerId = null
 
 
   
-  document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision, gameOver)
+  document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision, gameOverPage)
   
 
   createGrid(startingFrogPosition)

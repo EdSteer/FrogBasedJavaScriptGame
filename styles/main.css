@@ -124,6 +124,12 @@ span {
 
 }
 
+.bird1 {
+  background-image: url('../ASSETS/BIRD.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /* div   {
   background-image: url('../ASSETS/ROAD.png');
   
