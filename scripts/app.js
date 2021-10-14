@@ -165,7 +165,7 @@ function init() {
     addLily()
     startMovement()
     addFrog(startingFrogPosition)
-    // scorePoints()
+    
     addRiver()
     addRoad()
     
@@ -231,6 +231,9 @@ function init() {
       console.log('INVALID KEY')
     }
     addFrog(currentFrogPosition)
+      if (currentFrogPosition === 1 || currentFrogPosition === 4 || currentFrogPosition === 7) {
+        scorePoints()
+      }
     
   }
     // **move obstacles**
@@ -298,22 +301,20 @@ let timerId = null
   }
   
    // **POINTS**
-    // function scorePoints(event) {
-    //   if (event.target.classList.contains('lilypad')) {
-    //     event.target.clasllist.remove('frog')
-    //     score += 100
-    //     scoreDisplay.innerText = score
-    //     return
-    //   }
-    // }
+    function scorePoints() {
       
+      removeFrog(currentFrogPosition)
+      currentFrogPosition = startingFrogPosition
+      addFrog(currentFrogPosition)
+      score += 100
+      scoreDisplay.innerText = score
       
-      // removeFrog(currentFrogPosition)
-      // currentFrogPosition = startingFrogPosition
-      // addFrog(currentFrogPosition)
-      // score + 100
-      // scoreDisplay.innerText = score
+    }
     
+    
+      
+      
+      
     
   // }
   // scorePoints()
