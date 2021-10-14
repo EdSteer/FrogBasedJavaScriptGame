@@ -165,7 +165,7 @@ function init() {
     addLily()
     startMovement()
     addFrog(startingFrogPosition)
-    scorePoints()
+    // scorePoints()
     addRiver()
     addRoad()
     
@@ -298,11 +298,15 @@ let timerId = null
   }
   
    // **POINTS**
-    function scorePoints() {
-      if (cells[currentFrogPosition].classList.contains('lilypad')) {
-        currentScore.innerText = score += 100
-        addFrog(startingFrogPosition)
-      } 
+    // function scorePoints(event) {
+    //   if (event.target.classList.contains('lilypad')) {
+    //     event.target.clasllist.remove('frog')
+    //     score += 100
+    //     scoreDisplay.innerText = score
+    //     return
+    //   }
+    // }
+      
       
       // removeFrog(currentFrogPosition)
       // currentFrogPosition = startingFrogPosition
@@ -311,7 +315,8 @@ let timerId = null
       // scoreDisplay.innerText = score
     
     
-  }
+  // }
+  // scorePoints()
   
   
   // **COLLISIONS**
@@ -350,7 +355,7 @@ let timerId = null
 
 
   
-  document.addEventListener('keyup', handleKeyUp, frogCollision,)
+  document.addEventListener('keyup', handleKeyUp, frogCollision)
 
   // document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision, gameOverPage)
   
