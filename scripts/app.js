@@ -125,8 +125,7 @@ function init() {
 
   ]
 
-  const lilypads = [
-    
+  const lilypads = [    
     {
       cssClass: 'lilypad',
       position: 1
@@ -138,8 +137,7 @@ function init() {
     {
       cssClass:'lilypad',
       position:7
-    }
-    
+    }    
   ]
 
 //   const road = [
@@ -307,17 +305,18 @@ let timerId = null
   
    // **POINTS**
     function scorePoints(event) {
-      removeFrog(currentFrogPosition)
-      currentFrogPosition = startingFrogPosition
-      addFrog(currentFrogPosition)
-      score + 100
-      scoreDisplay.innerText = score
+      if (event.cells[1].classList.contains('frog')) {
+        currentScore.innerText = score += 100
+        event.cells[1].classList.removeFrog('frog')
+        event.cells[95].classList.addFrog('frog')
+      } 
+      // removeFrog(currentFrogPosition)
+      // currentFrogPosition = startingFrogPosition
+      // addFrog(currentFrogPosition)
+      // score + 100
+      // scoreDisplay.innerText = score
     
-    // if (event.cells[1].classList.contains('frog')) {
-    //   currentScore.innerText = score += 100
-    //   event.cells[1].classList.removeFrog('frog')
-    //   event.cells[95].classList.addFrog('frog')
-    // } 
+    
   }
 
   // **COLLISIONS**
