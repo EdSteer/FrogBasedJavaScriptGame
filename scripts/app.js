@@ -7,6 +7,7 @@ function init() {
   const scoreDisplay= document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
   const timeLeft = document.querySelector('#timer')
+  const gameOver = document.querySelector('#gameOver')
   
  
   let livesRemaining = 3
@@ -124,7 +125,7 @@ function init() {
 
   ]
 
-  const lilyPad = [
+  const lilypads = [
     
     {
       cssClass: 'lilypad',
@@ -141,14 +142,14 @@ function init() {
     
   ]
 
-//   const riverAndFoilage = [
+//   const road = [
 //     {
-//       cssClass: 'foilage',
-//       position: [40 - 49]
+//       cssClass: 'road',
+//       position: 
 //     },
 //     {
 //       cssClass: 'river',
-//       position: [10 - 39]
+//       position: 
 //     }
 // ]
   
@@ -169,25 +170,31 @@ function init() {
       cell.innerText = i
       grid.appendChild(cell)
       cells.push(cell)
+      console.log(cell)
     }
     obstacles.forEach(obstacle => {
       if (obstacle.order === 'first') {
         addObstacle(obstacle)
       }
     })
+
+    lilypads.forEach(lilypad => {
+      addLily(lilypad)
+    })
     // riverAndFoilage.forEach(riverFoilage => {
     //   addriverFoilage(riverFoilage)
     // })
     startMovement()
     addFrog(startingFrogPosition)
-    addLily(lilyPad)
+    addLily(lilypad)
+    
     
     
     
   
   }
   function addLily(position) {
-    cells[position].classList.add(lilyPad.cssClass)
+    cells[lilypad.currentPosition].classList.add(lilypad.cssClass)
   }
   
   function addFrog(position) {
@@ -197,17 +204,14 @@ function init() {
     cells[position].classList.remove(FrogClass)
   }
 
-  function addObstacle(obstacle) {
-    
+  function addObstacle(obstacle) {    
     cells[obstacle.currentPosition].classList.add(obstacle.cssClass)
 
   }
   function removeObstacle(obstacle) {
     cells[obstacle.currentPosition].classList.remove(obstacle.cssClass)
   }
-  function addriverFoilage(riverFoilage) {
-    cells[riverFoilage.position].classList.add(riverFoilage.cssClass)
-  }
+  
 
 
 
@@ -235,14 +239,15 @@ function init() {
       console.log('INVALID KEY')
     }
     addFrog(currentFrogPosition)
+    
   }
     // **move obstacles**
   function moveObstacles(obstacle){
     const collision = currentFrogPosition === obstacle.currentPosition
     if (collision) frogCollision()
 
-    const scoring = currentFrogPosition === lilyPad.currentPosition
-    if (scoring) scorePoints()
+    // const scoring = currentFrogPosition === lilyPad.currentPosition
+    // if (scoring) scorePoints()
     
     removeObstacle(obstacle)
     if (obstacle.currentPosition % width === width - 1 && obstacle.direction === 'right') {
@@ -327,7 +332,18 @@ let timerId = null
       
     }
 
+    // **GAMEOVER**
+
     
+
+    function gameOver() {
+      if (livesDisplay === 0 || timeLeft === 0 && scoreDisplay < 300) {
+        removeFrog(currentFrogPosition)
+        currentFrogPosition = startingFrogPosition
+        addFrog(startingFrogPosition)
+        clearInterval(timerId)
+      }
+    }
 
   startButton.addEventListener('click', startTimer)
     
@@ -345,7 +361,7 @@ let timerId = null
 
 
   
-  document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision)
+  document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision, gameOver)
   
 
   createGrid(startingFrogPosition)
