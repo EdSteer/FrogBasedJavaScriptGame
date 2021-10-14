@@ -7,7 +7,7 @@ function init() {
   const scoreDisplay= document.querySelector('#score-display')
   const livesDisplay = document.querySelector('#lives-display')
   const timeLeft = document.querySelector('#timer')
-  const gameOverPage = document.querySelector('#gameOver')
+  // const gameOverPage = document.querySelector('#gameOver')
   
  
   let livesRemaining = 3
@@ -125,20 +125,7 @@ function init() {
 
   ]
 
-  const lilypads = [    
-    {
-      cssClass: 'lilypad',
-      position: 1
-    },
-    {
-      cssClass: 'lilypad',
-      position: 4
-    },
-    {
-      cssClass:'lilypad',
-      position:7
-    }    
-  ]
+  const lilypads = [1, 4, 7]
 
 //   const road = [
 //     {
@@ -176,24 +163,28 @@ function init() {
       }
     })
 
-    lilypads.forEach(lilypad => {
-      addLily(lilypad)
-    })
+    // lilypads.forEach(lilypad => {
+    //   addLily(lilypad)
+    // })
     // riverAndFoilage.forEach(riverFoilage => {
     //   addriverFoilage(riverFoilage)
     // })
+    addLily()
     startMovement()
     addFrog(startingFrogPosition)
-    addLily(lilypad)
+    scorePoints()
     
-    
-    
-    
+  }
   
-  }
-  function addLily(position) {
-    cells[lilypad.currentPosition].classList.add(lilypad.cssClass)
-  }
+  
+  // function addLily(position) {
+  //   cells[lilypad.currentPosition].classList.add(lilypad.cssClass)
+  // }
+
+  function addLily() {
+    lilypads.forEach(lily => cells[lily].classList.add('lilypad'))
+    }
+    
   
   function addFrog(position) {
     cells[position].classList.add(FrogClass)
@@ -304,12 +295,12 @@ let timerId = null
   }
   
    // **POINTS**
-    function scorePoints(event) {
-      if (event.cells[1].classList.contains('frog')) {
+    function scorePoints() {
+      if (cells[currentFrogPosition].classList.contains('lilypad')) {
         currentScore.innerText = score += 100
-        event.cells[1].classList.removeFrog('frog')
-        event.cells[95].classList.addFrog('frog')
+        addFrog(startingFrogPosition)
       } 
+      
       // removeFrog(currentFrogPosition)
       // currentFrogPosition = startingFrogPosition
       // addFrog(currentFrogPosition)
@@ -318,7 +309,8 @@ let timerId = null
     
     
   }
-
+  
+  
   // **COLLISIONS**
 
     function frogCollision(event) {
@@ -334,14 +326,10 @@ let timerId = null
 
     
 
-    function gameOverPage() {
-      if (livesDisplay === 0 || timeLeft === 0 && scoreDisplay < 300) {
-        removeFrog(currentFrogPosition)
-        currentFrogPosition = startingFrogPosition
-        addFrog(startingFrogPosition)
-        clearInterval(timerId)
-      }
-    }
+    // function gameOverPage() {
+    //   if (livesDisplay === 0 || timeLeft === 0) {
+    //   // go to gameOverPage???
+    // }
 
   startButton.addEventListener('click', startTimer)
     
@@ -359,7 +347,9 @@ let timerId = null
 
 
   
-  document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision, gameOverPage)
+  document.addEventListener('keyup', handleKeyUp, frogCollision,)
+
+  // document.addEventListener('keyup', handleKeyUp, scorePoints, frogCollision, gameOverPage)
   
 
   createGrid(startingFrogPosition)
