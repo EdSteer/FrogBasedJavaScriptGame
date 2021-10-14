@@ -298,6 +298,9 @@ let timerId = null
         }
       }, 1000)
     }
+    if (timeRemaining === 0) {
+      gameEnd
+    }
   }
   
    // **POINTS**
@@ -308,10 +311,16 @@ let timerId = null
       addFrog(currentFrogPosition)
       score += 100
       scoreDisplay.innerText = score
+      if (score === 300) {
+        gameEnd
+      }
       
     }
     
-    
+    function gameEnd () {
+      alert(`Game Over!!!`)
+      clearInterval(timerId)
+    }
       
       
       
@@ -328,6 +337,9 @@ let timerId = null
       addFrog(currentFrogPosition)
         livesRemaining--
         livesDisplay.innerText = livesRemaining
+        if (livesRemaining === 0) {
+          gameEnd
+        }
       
     }
 
