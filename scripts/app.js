@@ -74,6 +74,22 @@ function init() {
       timer: null
     },
     {
+      cssClass: 'truck',
+      startPosition: 60,
+      currentPosition: 60,
+      order: 'first',
+      direction: 'right',
+      timer: null
+    },
+    {
+      cssClass: 'truck',
+      startPosition: 60,
+      currentPosition: 60,
+      order: 'second',
+      direction: 'right',
+      timer: null
+    },
+    {
       cssClass: 'turtle1',
       startPosition: 20,
       currentPosition: 20,
@@ -82,7 +98,7 @@ function init() {
       timer: null
     },
     {
-      cssClass: 'turtle1',
+      cssClass: 'pike',
       startPosition: 20,
       currentPosition: 20,
       order: 'second',
@@ -98,7 +114,7 @@ function init() {
       timer: null
     },
     {
-      cssClass: 'croc',
+      cssClass: 'bird',
       startPosition: 19,
       currentPosition: 19,
       order: 'second',
@@ -107,14 +123,14 @@ function init() {
     },
     {
       cssClass: 'croc',
-      startPosition: 33,
-      currentPosition: 33,
+      startPosition: 30,
+      currentPosition: 30,
       order: 'first',
       direction: 'right',
       timer: null
     },
     {
-      cssClass: 'bird1',
+      cssClass: 'boot',
       startPosition: 30,
       currentPosition: 30,
       order: 'second',
@@ -267,11 +283,11 @@ function init() {
   function startMovement(){
     obstacles.forEach(obstacle => {
       if (obstacle.order === 'first') {
-        obstacle.timer = setInterval(() => moveObstacles(obstacle), 1000)
+        obstacle.timer = setInterval(() => moveObstacles(obstacle), 750)
       } else {
         setTimeout(() => {
           addObstacle(obstacle)
-          obstacle.timer = setInterval(() => moveObstacles(obstacle), 1000)
+          obstacle.timer = setInterval(() => moveObstacles(obstacle), 750)
             
           
         }, 3000)
@@ -282,7 +298,7 @@ function init() {
   //  ** TIMER/SCORE/LIVES **
 
   // ** START GAME TIMER
-  let timeRemaining =60
+  let timeRemaining =30
   let timerId = null
 
 
@@ -321,7 +337,7 @@ function init() {
     
     function gameEnd () {
       alert(`Game Over!!!`)
-      clearInterval(timerId)
+      
     }
     
     gameEnd ()

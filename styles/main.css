@@ -14,9 +14,7 @@
     font-size: 30px;
   }
   
-  h1 {
-    padding-top: ;
-  }
+  
 
   
 body {
@@ -81,48 +79,68 @@ span {
 }
 
 .car2 {
-  background-image: url('../ASSETS/CAR2.png');
+  background-image: url('../ASSETS/CAR2\ copy.png');
   background-size: contain;
   background-repeat: no-repeat;
 
 }
 
 .car3 {
-  background-image: url('../ASSETS/SPORTSCAR1.png');
+  background-image: url('../ASSETS/SPORTSCAR.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+.bird {
+  background-image: url('../ASSETS/birdb.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+.pike {
+  background-image: url('../ASSETS/transparentpike.png');
   background-size: contain;
   background-repeat: no-repeat;
 
 }
 
 .turtle1 {
-  background-image: url('../ASSETS/TURTLE.png');
+  background-image: url('../ASSETS/rat.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .log1 {
-  background-image: url('../ASSETS/LOG1.png');
+  background-image: url('../ASSETS/ratb.png');
   background-size: contain;
   background-repeat: no-repeat;  
 }
 
 .log2 {
-  background-image: url('../ASSETS/LOG1.png');
+  background-image: url('../ASSETS/pike2.png');
   background-size: 125%;
   background-repeat: no-repeat;  
 }
 
 .croc {
-  background-image: url('../ASSETS/CROC1.png');
+  background-image: url('../ASSETS/CROCa.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .lilypad {
-  background-image: url('../ASSETS/LilyPad.png');
+  background-image: url('../ASSETS/LilyPada.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.truck {
+  background-image: url('../ASSETS/truck.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
 
 .foilage {
@@ -130,8 +148,8 @@ span {
 
 }
 
-.bird1 {
-  background-image: url('../ASSETS/BIRD.png');
+.boot {
+  background-image: url('../ASSETS/BOOT.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
