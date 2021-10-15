@@ -123,18 +123,18 @@ function init() {
     },
     {
       cssClass: 'croc',
-      startPosition: 30,
-      currentPosition: 30,
+      startPosition: 39,
+      currentPosition: 39,
       order: 'first',
-      direction: 'right',
+      direction: 'left',
       timer: null
     },
     {
       cssClass: 'boot',
-      startPosition: 30,
-      currentPosition: 30,
+      startPosition: 39,
+      currentPosition: 39,
       order: 'second',
-      direction: 'right',
+      direction: 'left',
       timer: null
     }
 
@@ -144,11 +144,11 @@ function init() {
 
   const lilypads = [1, 4, 7]
 
-  const rivers = [0, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+  const rivers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
 
   const roads = [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89]
   
-  
+  const trolleys = [9, 25, 31,]
   
 
   
@@ -185,6 +185,7 @@ function init() {
     
     addRiver()
     addRoad()
+    addTrolley()
     
   }
   
@@ -204,7 +205,9 @@ function init() {
   function addRoad() {
     roads.forEach(road => cells[road].classList.add('road'))
   }
-    
+  function addTrolley() {
+    trolleys.forEach(trolley => cells[trolley].classList.add('trolley'))
+  }
   
   function addFrog(position) {
     cells[position].classList.add(FrogClass)
