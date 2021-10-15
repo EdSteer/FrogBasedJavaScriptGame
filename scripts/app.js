@@ -150,7 +150,7 @@ function init() {
   
   const trolleys = [9, 25, 31,]
   
-
+  const herons = [0, 38]
   
 
   
@@ -186,18 +186,18 @@ function init() {
     addRiver()
     addRoad()
     addTrolley()
-    
+    addHeron()
   }
   
   
-  // function addLily(position) {
-  //   cells[lilypad.currentPosition].classList.add(lilypad.cssClass)
-  // }
+
 
   function addLily() {
     lilypads.forEach(lily => cells[lily].classList.add('lilypad'))
     }
-
+  function addHeron() {
+    herons.forEach(heron => cells[heron].classList.add('heron'))
+  }
   function addRiver() {
     rivers.forEach(river => cells[river].classList.add('river')) 
     }
@@ -256,7 +256,7 @@ function init() {
       }
     
   }
-    // **move obstacles**
+    
   function moveObstacles(obstacle){
     const collision = currentFrogPosition === obstacle.currentPosition
     if (collision) frogCollision()
@@ -314,14 +314,13 @@ function init() {
       timerId = setInterval(() => {
         timeRemaining--
         timeLeft.innerHTML = timeRemaining
-        if (timeRemaining === 0) {
+        if (timeRemaining === -1) {
           clearInterval(timerId)
+          gameEnd()
         }
       }, 1000)
     }
-    if (timeRemaining === 0) {
-      gameEnd
-    }
+    
   }
   
    // **POINTS**
@@ -333,7 +332,7 @@ function init() {
       score += 100
       scoreDisplay.innerText = score
       if (score === 300) {
-        gameEnd
+        gameEnd()
       }
       
     }
@@ -343,7 +342,7 @@ function init() {
       
     }
     
-    gameEnd ()
+    
       
       
     
@@ -360,7 +359,7 @@ function init() {
         livesRemaining--
         livesDisplay.innerText = livesRemaining
         if (livesRemaining === 0) {
-          gameEnd
+          gameEnd()
         }
       
     }
