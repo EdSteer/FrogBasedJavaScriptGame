@@ -9,7 +9,8 @@ function init() {
   const timeLeft = document.querySelector('#timer')
   // const gameOverPage = document.querySelector('#gameOver')
   
- 
+  
+
   let livesRemaining = 3
   let score = 0
   
@@ -139,7 +140,7 @@ function init() {
   
   
   
-// ** GRID **
+
 
 
   function createGrid(startingFrogPosition) {
@@ -210,7 +211,7 @@ function init() {
   
   
   
-// ** MOVING FROG **
+
     function handleKeyUp(event) {
     const key = event.keyCode
     removeFrog(currentFrogPosition)
@@ -241,7 +242,7 @@ function init() {
     const collision = currentFrogPosition === obstacle.currentPosition
     if (collision) frogCollision()
 
-   
+
     
     removeObstacle(obstacle)
     if (obstacle.currentPosition % width === width - 1 && obstacle.direction === 'right') {
@@ -281,8 +282,9 @@ function init() {
   //  ** TIMER/SCORE/LIVES **
 
   // ** START GAME TIMER
-let timeRemaining =60
-let timerId = null
+  let timeRemaining =60
+  let timerId = null
+
 
   function startTimer() {
     
@@ -321,7 +323,8 @@ let timerId = null
       alert(`Game Over!!!`)
       clearInterval(timerId)
     }
-      
+    
+    gameEnd ()
       
       
     

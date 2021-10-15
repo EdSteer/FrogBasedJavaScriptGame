@@ -14,7 +14,11 @@
     font-size: 30px;
   }
   
+  h1 {
+    padding-top: ;
+  }
 
+  
 body {
   /* background-image: url('../ASSETS/FOILAGEBORDER.png'); */
   background-color: seagreen;
@@ -44,8 +48,9 @@ span {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 600px;
+  height: 500px;
   width: 900px;
+  margin-bottom: 20vh;
 }
 
 .grid div {
@@ -64,8 +69,9 @@ span {
 .infotop {
   display: flex;
   justify-content: space-around;
+  align-items: baseline;
   font-family: 'Space Mono', monospace;
-  padding-top: 5vh;
+  margin-top: 5vh;
 }
 
 .car1 {
